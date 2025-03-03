@@ -9,7 +9,8 @@ type Props = {
   className?: string;
 };
 export const Paragraph = ({ paragraph, className, index, total }: Props) => {
-  const { content, translationWords } = paragraph;
+  const { content, translations } = paragraph;
+  console.log("translations are ", translations);
   return (
     <Card className={className}>
       <CardContent className="p-6 flex flex-col">
@@ -20,7 +21,7 @@ export const Paragraph = ({ paragraph, className, index, total }: Props) => {
           <div className="mb-4 leading-7 text-muted-foreground">
             <div
               dangerouslySetInnerHTML={{
-                __html: highlightTranslations(content, translationWords),
+                __html: highlightTranslations(content, translations),
               }}
             />
           </div>

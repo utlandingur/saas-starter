@@ -1,5 +1,5 @@
 export type TranslationWord = {
-  word: string;
+  originalWord: string;
   translation: string;
 };
 
@@ -7,16 +7,16 @@ export type ArticleType = {
   title: string;
   sections: Array<{
     paragraph: ParagraphType;
-    quizQuestions: QuizQuestion[];
+    quizQuestions: MultipleChoice[];
   }>;
 };
 
 export type ParagraphType = {
   content: string;
-  translationWords: TranslationWord[];
+  translations: TranslationWord[];
 };
 
-export type QuizQuestion = {
+export type MultipleChoice = {
   id: number;
   question: string;
   options: string[];

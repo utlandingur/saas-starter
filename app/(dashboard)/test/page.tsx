@@ -1,17 +1,19 @@
 import { Article } from "@/components/article/Article";
-import type { ParagraphType, QuizQuestion } from "@/types/learning-types";
+import { Test } from "@/components/Test";
+import type { ParagraphType, MultipleChoice } from "@/types/learning-types";
 
 const TestComponent = () => {
   return (
     <div>
-      <Article
+      <Test />
+      {/* <Article
         article={{
           title: "Test Article",
           sections: [
             { paragraph: testParagrapgh, quizQuestions: sampleQuizQuestions },
           ],
         }}
-      />
+      /> */}
     </div>
   );
 };
@@ -19,7 +21,7 @@ const TestComponent = () => {
 export default TestComponent;
 
 // TEST DATA
-const sampleQuizQuestions: QuizQuestion[] = [
+const sampleQuizQuestions: MultipleChoice[] = [
   {
     id: 1,
     question: "What is the capital of France?",
@@ -76,17 +78,17 @@ The rainforest plays a crucial role in regulating the Earth's climate by absorbi
 
 Efforts are being made to protect the Amazon, including the establishment of protected areas and sustainable development initiatives. It is essential to continue these efforts to preserve the rainforest for future generations.`,
 
-  translationWords: [
-    { word: "rainforest", translation: "selva tropical" },
-    { word: "diverse", translation: "diverso" },
-    { word: "species", translation: "especies" },
-    { word: "regulating", translation: "regulando" },
-    { word: "carbon dioxide", translation: "dióxido de carbono" },
-    { word: "oxygen", translation: "oxígeno" },
-    { word: "deforestation", translation: "deforestación" },
-    { word: "ecosystem", translation: "ecosistema" },
-    { word: "sustainable", translation: "sostenible" },
-    { word: "generations", translation: "generaciones" },
+  translations: [
+    { originalWord: "rainforest", translation: "selva tropical" },
+    { originalWord: "diverse", translation: "diverso" },
+    { originalWord: "species", translation: "especies" },
+    { originalWord: "regulating", translation: "regulando" },
+    { originalWord: "carbon dioxide", translation: "dióxido de carbono" },
+    { originalWord: "oxygen", translation: "oxígeno" },
+    { originalWord: "deforestation", translation: "deforestación" },
+    { originalWord: "ecosystem", translation: "ecosistema" },
+    { originalWord: "sustainable", translation: "sostenible" },
+    { originalWord: "generations", translation: "generaciones" },
   ],
 };
 

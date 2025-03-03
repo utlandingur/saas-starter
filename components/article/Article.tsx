@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const Article = ({ article, className }: Props) => {
+  console.log("article is ", article);
   return (
     <div
       className={cn(
