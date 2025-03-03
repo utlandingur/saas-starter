@@ -81,13 +81,18 @@ const multipleChoice: ObjectSchema = {
     correctAnswer,
     explanation,
   },
+  description:
+    "Multiple choice question to test comprehension in provided native language",
   required: ["question", "options", "correctAnswer", "explanation"],
 };
 
 const quizQuestions: ArraySchema = {
   type: SchemaType.ARRAY,
   items: multipleChoice,
-  minItems: 1,
+  minItems: 2,
+  maxItems: 4,
+  description:
+    "Multiple choice questions to test comprehension at beginner level",
 };
 
 const sections: ArraySchema = {
@@ -121,7 +126,7 @@ const article = (nativeLang: string): ObjectSchema => {
     properties: {
       title,
       sections,
-      language: lang(nativeLang),
+      nativeLanguage: lang(nativeLang),
     },
     required: ["title", "sections"],
   } as const;

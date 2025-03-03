@@ -2,17 +2,13 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { createLearning } from "@/lib/createLearning";
-import { SchemaProperties } from "@/types/gemini";
 import { Article } from "./article/Article";
 import { ArticleType } from "@/types/learning-types";
-
-const text = `Um er að ræða 170 milljónir króna í tilfelli Sjálfstæðisflokksins en 240 milljónir í tilfelli Flokks fólksins.
-
-„Mér finnst líka ábyrgð fjármálaráðuneytisins vera einhver. Að vera að greiða pening inn á reikninga ef fullnægjandi gögn liggja ekki fyrir. Það er enginn að fara að greiða mér öryrkjabætur ef ég hef ekki lagt fram örorkumat,“ sagði Guðrún Hafsteinsdóttir.
-
-Sigurður Ingi Jóhannsson, formaður Framsóknarflokksins, var fjármálaráðherra á þeim tíma sem styrkir voru greiddir út án þess að flokkarnir uppfylltu skilyrðin.`;
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
 
 export const Test = () => {
+  const [text, setText] = useState("");
   const [state, setState] = useState<ArticleType | undefined>(undefined);
 
   const handleOnClick = async () => {
@@ -26,9 +22,26 @@ export const Test = () => {
     }
   };
 
-  return !state ? (
-    <Button onClick={handleOnClick} />
-  ) : (
-    <Article article={state} />
+  return (
+    <>
+      <div className="flex gap-2 flex-col max-w-3xl mx-auto p-4">
+        <Label htmlFor="article">Copy and paste text here.</Label>
+        <Input
+          type="textarea"
+          placeholder="Text goes here"
+          name="article"
+          id="article"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <Button
+          onClick={!state ? handleOnClick : undefined}
+          disabled={!!state || !text}
+        >
+          Create learning material
+        </Button>
+      </div>
+      {state && <Article article={state} />}
+    </>
   );
 };
