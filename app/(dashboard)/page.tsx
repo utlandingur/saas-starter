@@ -1,6 +1,6 @@
-import { ArrowRight, CreditCard, Database } from "lucide-react";
-import { Terminal } from "./terminal";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
+import { ArrowRight, CreditCard, Database } from 'lucide-react';
+import { Terminal } from './terminal';
 
 export default function HomePage() {
   return (
@@ -102,12 +102,15 @@ export default function HomePage() {
               </h2>
               <p className="mt-3 max-w-3xl text-lg text-gray-500">
                 Our template provides everything you need to get your SaaS up
-                and running quickly. Don&apos;t waste time on boilerplate -
-                focus on what makes your product unique.
+                and running quickly. Don't waste time on boilerplate - focus on
+                what makes your product unique.
               </p>
             </div>
             <div className="mt-8 lg:mt-0 flex justify-center lg:justify-end">
-              <a href="https://github.com/nextjs/saas-starter" target="_blank">
+              <a
+                href="https://github.com/nextjs/saas-starter"
+                target="_blank"
+              >
                 <Button className="bg-white hover:bg-gray-100 text-black border border-gray-200 rounded-full text-xl px-12 py-6 inline-flex items-center justify-center">
                   View the code
                   <ArrowRight className="ml-3 h-6 w-6" />

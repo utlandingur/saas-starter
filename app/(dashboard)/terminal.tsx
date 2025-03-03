@@ -23,7 +23,7 @@ export function Terminal() {
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [terminalSteps.length]);
+  }, [terminalStep]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(terminalSteps.join('\n'));

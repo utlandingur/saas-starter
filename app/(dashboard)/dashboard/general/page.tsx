@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useUser } from "@/lib/auth";
-import { Loader2 } from "lucide-react";
-import { startTransition, use, useActionState } from "react";
+import { startTransition, use, useActionState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Loader2 } from 'lucide-react';
+import { useUser } from '@/lib/auth';
+import { updateAccount } from '@/app/(login)/actions';
 
 type ActionState = {
   error?: string;
@@ -18,7 +19,7 @@ export default function GeneralPage() {
   const user = use(userPromise);
   const [state, formAction, isPending] = useActionState<ActionState, FormData>(
     updateAccount,
-    { error: "", success: "" }
+    { error: '', success: '' }
   );
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -53,7 +54,7 @@ export default function GeneralPage() {
                 id="name"
                 name="name"
                 placeholder="Enter your name"
-                defaultValue={user?.name || ""}
+                defaultValue={user?.name || ''}
                 required
               />
             </div>
@@ -64,7 +65,7 @@ export default function GeneralPage() {
                 name="email"
                 type="email"
                 placeholder="Enter your email"
-                defaultValue={user?.email || ""}
+                defaultValue={user?.email || ''}
                 required
               />
             </div>
@@ -85,7 +86,7 @@ export default function GeneralPage() {
                   Saving...
                 </>
               ) : (
-                "Save Changes"
+                'Save Changes'
               )}
             </Button>
           </form>
@@ -93,10 +94,4 @@ export default function GeneralPage() {
       </Card>
     </section>
   );
-}
-function updateAccount(
-  state: ActionState,
-  payload: FormData
-): ActionState | Promise<ActionState> {
-  throw new Error("Function not implemented.");
 }
