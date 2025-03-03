@@ -1,19 +1,18 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { use, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { CircleIcon, Home, LogOut } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { useUser } from "@/lib/auth";
+import { Avatar, AvatarImage, AvatarFallback } from "@radix-ui/react-avatar";
 import {
   DropdownMenu,
+  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useUser } from '@/lib/auth';
-import { signOut } from '@/app/(login)/actions';
-import { useRouter } from 'next/navigation';
+} from "@radix-ui/react-dropdown-menu";
+import { Link, CircleIcon, Home, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState, use } from "react";
+import { signOut } from "../(login)/actions";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +23,7 @@ function Header() {
   async function handleSignOut() {
     await signOut();
     router.refresh();
-    router.push('/');
+    router.push("/");
   }
 
   return (
@@ -45,12 +44,12 @@ function Header() {
             <DropdownMenu open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <DropdownMenuTrigger>
                 <Avatar className="cursor-pointer size-9">
-                  <AvatarImage alt={user.name || ''} />
+                  <AvatarImage alt={user.name || ""} />
                   <AvatarFallback>
                     {user.email
-                      .split(' ')
+                      .split(" ")
                       .map((n) => n[0])
-                      .join('')}
+                      .join("")}
                   </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>

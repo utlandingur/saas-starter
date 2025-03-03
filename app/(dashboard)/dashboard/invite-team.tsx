@@ -1,20 +1,21 @@
-'use client';
+"use client";
 
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { inviteTeamMember } from "@/app/(login)/actions";
+import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardHeader,
   CardTitle,
-  CardFooter
-} from '@/components/ui/card';
-import { Loader2, PlusCircle } from 'lucide-react';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { use, useActionState } from 'react';
-import { inviteTeamMember } from '@/app/(login)/actions';
-import { useUser } from '@/lib/auth';
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup } from "@/components/ui/radio-group";
+import { useUser } from "@/lib/auth";
+import { RadioGroupItem } from "@radix-ui/react-radio-group";
+import { Loader2, PlusCircle } from "lucide-react";
+import { use, useActionState } from "react";
 
 type ActionState = {
   error?: string;
@@ -24,11 +25,11 @@ type ActionState = {
 export function InviteTeamMember() {
   const { userPromise } = useUser();
   const user = use(userPromise);
-  const isOwner = user?.role === 'owner';
+  const isOwner = user?.role === "owner";
   const [inviteState, inviteAction, isInvitePending] = useActionState<
     ActionState,
     FormData
-  >(inviteTeamMember, { error: '', success: '' });
+  >(inviteTeamMember, { error: "", success: "" });
 
   return (
     <Card>
