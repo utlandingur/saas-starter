@@ -8,7 +8,10 @@
     "db:seed": "npx tsx lib/db/seed.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+  "lint:eslint": "eslint \"*.{js,ts,tsx}\" \"{app,components,lib}/**/*.{js,ts,tsx}\" --max-warnings=0 --report-unused-disable-directives",
+    "lint:types": "tsc --noEmit --incremental false",
+    "lint": "concurrently \"npm run lint:eslint\" \"npm run lint:types\""
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.2",
@@ -46,5 +49,11 @@
     "tailwindcss-react-aria-components": "1.2.0",
     "typescript": "^5.7.3",
     "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.2.0",
+    "concurrently": "^8.2.0",
+    "prettier": "^2.8.8"
   }
 }
