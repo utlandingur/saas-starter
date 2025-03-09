@@ -1,4 +1,5 @@
-import { getSchema } from "@/app/schemas/schema";
+import { schemas } from "@/app/schemas/schema";
+import type { SchemaName } from "@/types/schema-types";
 import { google } from "@ai-sdk/google";
 import { generateObject } from "ai";
 
@@ -9,7 +10,9 @@ export const maxDuration = 30;
 
 export async function POST(req: Request) {
   const request = await req.json();
-  const schema = getSchema(request.schema);
+  const schemaName = request.schemaName as SchemaName;
+
+  const schema = schemas[schemaName];
   if (!schema) {
     return new NextResponse("Schema not found", { status: 404 });
   }

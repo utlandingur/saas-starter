@@ -1,6 +1,5 @@
 "use client";
 import { useObject } from "@/app/hooks/useObject";
-import { Recipe } from "../schemas/recipeSchema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -8,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 const prompt = "Generate a lasagna recipe.";
 
 const Object = () => {
-  const { object, isLoading, generate, error } = useObject<Recipe>("recipe");
+  const { object, isLoading, generate, error } = useObject("recipe");
 
   return (
     <div className="flex flex-col w-full max-w-md py-12 mx-auto space-y-6">
@@ -58,10 +57,7 @@ const Object = () => {
         </CardContent>
       </Card>
 
-      <Button
-        onClick={() => generate({ prompt, schema: "recipe" })}
-        className="w-full"
-      >
+      <Button onClick={() => generate({ prompt })} className="w-full">
         Generate Recipe
       </Button>
     </div>
