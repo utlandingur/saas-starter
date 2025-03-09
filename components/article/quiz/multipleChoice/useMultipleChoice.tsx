@@ -1,8 +1,8 @@
-import { QuizQuestion } from "@/types/learning-types";
+import type { MultipleChoiceType } from "@/app/schemas/quizSchema";
 import { useState } from "react";
 
 export const useMultipleChoice = (
-  questions: QuizQuestion[],
+  questions: MultipleChoiceType[],
   next?: () => void
 ) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

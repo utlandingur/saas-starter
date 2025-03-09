@@ -9,6 +9,11 @@ const prompt = "Generate a lasagna recipe.";
 const Object = () => {
   const { object, isLoading, generate, error } = useObject("recipe");
 
+  const handleOnClick = async () => {
+    console.log("clicked");
+    await generate({ prompt });
+  };
+
   return (
     <div className="flex flex-col w-full max-w-md py-12 mx-auto space-y-6">
       <Card className="p-6 shadow-lg">
@@ -38,7 +43,7 @@ const Object = () => {
               <ul className="list-disc pl-5 space-y-1">
                 {object.recipe.ingredients.map((ingredient, index) => (
                   <li key={index} className="text-sm">
-                    <span className="font-medium">{ingredient.name}</span> -{" "}
+                    <span className="font-medium">{ingredient.name}</span> -
                     {ingredient.amount}
                   </li>
                 ))}
@@ -57,7 +62,7 @@ const Object = () => {
         </CardContent>
       </Card>
 
-      <Button onClick={() => generate({ prompt })} className="w-full">
+      <Button onClick={handleOnClick} className="w-full">
         Generate Recipe
       </Button>
     </div>

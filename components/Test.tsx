@@ -1,26 +1,23 @@
 "use client";
-import { useState } from "react";
 import { Button } from "./ui/button";
-import { createLearning } from "@/lib/createLearning";
 import { Article } from "./article/Article";
-import { ArticleType } from "@/types/learning-types";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { useObject } from "@/app/hooks/useObject";
 
 export const Test = () => {
-  const [text, setText] = useState("");
-  const [state, setState] = useState<ArticleType | undefined>(undefined);
+  const { prompt, setPrompt, object, isLoading, error, generate } =
+    useObject("article");
+  const languagePrompt = "Provide this test for a native English speaker.";
+  const prompts = [
+    "Split the text into very short paragraphs.",
+    "For each paragraph show the text in original language, provide translations for difficult words and create a multiple choice quiz for it with multiple questions.",
+    "The person taking the test is English and not good at the language.",
+    `The article content is: + ${prompt}`,
+  ];
 
-  const handleOnClick = async () => {
-    const data = await createLearning(text, "beginner");
-    if (data.error) {
-      console.log(data.error);
-    }
-    if (data.response) {
-      console.log(data.response);
-      setState(data.response);
-    }
-  };
+  const handleOnClick = async () =>
+    await generate({ prompt: prompts.join("\n") });
 
   return (
     <>
@@ -31,17 +28,17 @@ export const Test = () => {
           placeholder="Text goes here"
           name="article"
           id="article"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
         />
         <Button
-          onClick={!state ? handleOnClick : undefined}
-          disabled={!!state || !text}
+          onClick={handleOnClick}
+          disabled={!!object || isLoading || !prompt}
         >
           Create learning material
         </Button>
       </div>
-      {state && <Article article={state} />}
+      {object && <Article article={object} />}
     </>
   );
 };

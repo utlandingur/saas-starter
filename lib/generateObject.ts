@@ -1,9 +1,6 @@
 import { RequestOptions } from "@/types/ai-types";
-import {
-  schemas,
-  type SchemaName,
-  type InferSchema,
-} from "@/app/schemas/schema";
+import { schemas } from "@/app/schemas/schemas";
+import type { SchemaName, InferSchema } from "@/types/schema-types";
 
 export const generateObject = async <T extends SchemaName>(
   schemaName: T,

@@ -1,4 +1,4 @@
-import { schemas } from "@/app/schemas/schema";
+import { schemas } from "@/app/schemas/schemas";
 import { z } from "zod";
 
 export type SchemaName = keyof typeof schemas;

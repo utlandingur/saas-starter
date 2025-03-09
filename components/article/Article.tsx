@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
-import type { ArticleType } from "@/types/learning-types";
 import { Paragraph } from "./paragraph/Paragraph";
 import { MultipleChoice } from "./quiz/multipleChoice/MultipleChoice";
+import { ArticleType } from "@/app/schemas/quizSchema";
 
 type Props = {
   article: ArticleType;
@@ -9,7 +9,6 @@ type Props = {
 };
 
 export const Article = ({ article, className }: Props) => {
-  console.log("article is ", article);
   return (
     <div
       className={cn(

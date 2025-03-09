@@ -12,9 +12,10 @@ import { CheckCircle, XCircle } from "lucide-react";
 import { QuizQuestion } from "@/types/learning-types";
 import { ScoreScreen } from "@/components/article/quiz/scoreScreen/ScoreScreen";
 import { useMultipleChoice } from "./useMultipleChoice";
+import { MultipleChoiceType } from "@/app/schemas/quizSchema";
 
 type Props = {
-  questions: QuizQuestion[];
+  questions: MultipleChoiceType[];
   next?: () => void;
   className?: string;
 };

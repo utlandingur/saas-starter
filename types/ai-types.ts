@@ -1,5 +1,5 @@
 export type RequestOptions = {
-  prompt: string;
+  prompt?: string;
   system?: string;
   schemaDescription?: string;
 };

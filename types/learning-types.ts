@@ -7,7 +7,7 @@ export type ArticleType = {
   title: string;
   sections: Array<{
     paragraph: ParagraphType;
-    quizQuestions: MultipleChoice[];
+    quizQuestions: QuizQuestion[];
   }>;
 };
 
@@ -16,7 +16,7 @@ export type ParagraphType = {
   translations: TranslationWord[];
 };
 
-export type MultipleChoice = {
+export type QuizQuestion = {
   id: number;
   question: string;
   options: string[];
