@@ -1,18 +1,19 @@
-import { getSchema, SchemaName } from "@/app/schemas/schema";
 import { RequestOptions } from "@/types/ai-types";
-import { ZodSchema } from "zod";
+import {
+  schemas,
+  type SchemaName,
+  type InferSchema,
+} from "@/app/schemas/schema";
 
-export const generateObject = async <T extends ZodSchema>(
-  schemaName: SchemaName,
+export const generateObject = async <T extends SchemaName>(
+  schemaName: T,
   controller: AbortController,
   requestOptions: RequestOptions
-): Promise<T> => {
-  const schema = getSchema(schemaName);
-
+): Promise<InferSchema<T>> => {
   try {
     const response = await fetch("/api/generateObject", {
       method: "POST",
-      body: JSON.stringify(requestOptions),
+      body: JSON.stringify({ ...requestOptions, schemaName }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -24,7 +25,11 @@ export const generateObject = async <T extends ZodSchema>(
     }
 
     const data = await response.json();
+    const schema = schemas[schemaName];
     const result = schema.safeParse(data);
+    if (!result.success) {
+      throw new Error("Validation failed");
+    }
     return result.data;
   } catch (error) {
     throw new Error(
