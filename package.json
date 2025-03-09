@@ -14,6 +14,9 @@
     "lint": "concurrently \"npm run lint:eslint\" \"npm run lint:types\""
   },
   "dependencies": {
+    "@ai-sdk/google": "^1.1.20",
+    "@ai-sdk/openai": "^1.2.1",
+    "@ai-sdk/react": "^1.1.21",
     "@google/generative-ai": "^0.22.0",
     "@radix-ui/react-avatar": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.5",
@@ -28,6 +31,7 @@
     "@types/node": "^22.13.1",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
+    "ai": "^4.1.54",
     "autoprefixer": "^10.4.20",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.1",
