@@ -1,10 +1,10 @@
 import type { SchemaName } from "@/types/schema-types";
 import { recipeSchema } from "./recipeSchema";
-import { articleSchema } from "./quizSchema";
+import { learningMaterialSchema } from "./learningMaterialSchema";
 
 export const schemas = {
   recipe: recipeSchema,
-  article: articleSchema,
+  article: learningMaterialSchema,
 } as const;
 
 export function isValidSchema(key: string): key is SchemaName {

@@ -1,25 +1,15 @@
-export type TranslationWord = {
-  originalWord: string;
-  translation: string;
-};
+import {
+  quizSchema,
+  learningMaterialSchema,
+  paragraphSchema,
+  translationSchema,
+} from "@/app/schemas/learningMaterialSchema";
+import { z } from "zod";
 
-export type ArticleType = {
-  title: string;
-  sections: Array<{
-    paragraph: ParagraphType;
-    quizQuestions: QuizQuestion[];
-  }>;
-};
+export type ParagraphType = z.infer<typeof paragraphSchema>;
 
-export type ParagraphType = {
-  content: string;
-  translations: TranslationWord[];
-};
+export type TranslationWord = z.infer<typeof translationSchema>;
 
-export type QuizQuestion = {
-  id: number;
-  question: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-};
+export type QuizQuestions = z.infer<typeof quizSchema>;
+
+export type LearningMaterialType = z.infer<typeof learningMaterialSchema>;

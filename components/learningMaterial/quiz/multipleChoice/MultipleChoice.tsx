@@ -9,13 +9,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CheckCircle, XCircle } from "lucide-react";
-import { QuizQuestion } from "@/types/learning-types";
-import { ScoreScreen } from "@/components/article/quiz/scoreScreen/ScoreScreen";
+import type { QuizQuestions } from "@/types/learning-types";
 import { useMultipleChoice } from "./useMultipleChoice";
-import { MultipleChoiceType } from "@/app/schemas/quizSchema";
+import { ScoreScreen } from "components/learningMaterial/quiz/scoreScreen/ScoreScreen";
 
 type Props = {
-  questions: MultipleChoiceType[];
+  questions: QuizQuestions;
   next?: () => void;
   className?: string;
 };

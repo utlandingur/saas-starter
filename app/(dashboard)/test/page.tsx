@@ -1,9 +1,9 @@
-import { Test } from "@/components/Test";
+import { LearningPage } from "@/components/learningPage/LearningPage";
 
 const TestComponent = () => {
   return (
     <div>
-      <Test />
+      <LearningPage lang={"English"} />
       {/* <Article
         article={{
           title: "Test Article",
